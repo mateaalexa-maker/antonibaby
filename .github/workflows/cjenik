@@ -1,0 +1,44 @@
+name: Antoni Baby — jutarnji cjenik
+on:
+  schedule:
+    - cron: '15 5 * * 1-5'
+      timezone: 'Europe/Zagreb'
+    - cron: '15 6 * * 1-5'
+      timezone: 'Europe/Zagreb'
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data/cijene.json'
+      - 'scripts/generate_cjenik.py'
+      - '.github/workflows/cjenik.yml'
+permissions:
+  contents: write
+concurrency:
+  group: antoni-cjenik
+  cancel-in-progress: false
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate and validate
+        env:
+          TZ: Europe/Zagreb
+        run: python scripts/generate_cjenik.py
+      - name: Commit updated price lists and snapshots
+        run: |
+          git config user.name "antoni-baby-automation[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/cijene.json app.js index.html pricelists/
+          if ! git diff --cached --quiet; then
+            git commit -m "Automatski cjenik $(TZ=Europe/Zagreb date +%Y-%m-%d)"
+            git push
+          else
+            echo "No changed files"
+          fi
