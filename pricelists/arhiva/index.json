@@ -1,0 +1,17 @@
+{
+  "updated_at": "2026-11-03T09:19:12.080029+01:00",
+  "files": [
+    {
+      "filename": "obrt_Ulica-Mate-Vladica-163-Makarska_AB01_0001_2026-11-03_09-19_dostava.csv",
+      "url": "pricelists/arhiva/obrt_Ulica-Mate-Vladica-163-Makarska_AB01_0001_2026-11-03_09-19_dostava.csv",
+      "date": "2026-11-03",
+      "kind": "dostava"
+    },
+    {
+      "filename": "obrt_Ulica-Mate-Vladica-163-Makarska_AB01_0001_2026-11-03_09-19_cjenik.csv",
+      "url": "pricelists/arhiva/obrt_Ulica-Mate-Vladica-163-Makarska_AB01_0001_2026-11-03_09-19_cjenik.csv",
+      "date": "2026-11-03",
+      "kind": "proizvodi"
+    }
+  ]
+}

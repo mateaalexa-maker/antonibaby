@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "business": {
+    "name": "Antoni baby, obrt za proizvodnju",
+    "owner": "Antonela Klarić",
+    "address": "Ulica Mate Vladića 163, Makarska",
+    "oib": "29127363031",
+    "store_type": "obrt",
+    "store_code": "AB01"
+  },
+  "reference_date": "2026-09-10",
+  "products": [
+    {
+      "code": "AB-001",
+      "hr": "Marama za dojenje",
+      "en": "Nursing cover",
+      "brand": "Antoni Baby",
+      "unit": "kom",
+      "price_eur": 23,
+      "anchor_eur": 23,
+      "barcode": null,
+      "availability": "nedostupno",
+      "special_sale": false,
+      "special_sale_name": "",
+      "image": "DSCF0761.jpg"
+    },
+    {
+      "code": "AB-002",
+      "hr": "Jastuk za hranjenje",
+      "en": "Feeding pillow",
+      "brand": "Antoni Baby",
+      "unit": "kom",
+      "price_eur": 20,
+      "anchor_eur": 20,
+      "barcode": null,
+      "availability": "nedostupno",
+      "special_sale": false,
+      "special_sale_name": "",
+      "image": "DSCF0805.jpg"
+    },
+    {
+      "code": "AB-003",
+      "hr": "Mazilica",
+      "en": "Baby comforter",
+      "brand": "Antoni Baby",
+      "unit": "kom",
+      "price_eur": 18,
+      "anchor_eur": 18,
+      "barcode": null,
+      "availability": "nedostupno",
+      "special_sale": false,
+      "special_sale_name": "",
+      "image": "DSCF1053.jpg"
+    },
+    {
+      "code": "AB-004",
+      "hr": "Tetra prekrivač",
+      "en": "Muslin blanket",
+      "brand": "Antoni Baby",
+      "unit": "kom",
+      "price_eur": 30,
+      "anchor_eur": 30,
+      "barcode": null,
+      "availability": "nedostupno",
+      "special_sale": false,
+      "special_sale_name": "",
+      "image": "DSCF0674.jpg"
+    },
+    {
+      "code": "AB-005",
+      "hr": "Marama + mazilica",
+      "en": "Nursing cover + comforter",
+      "brand": "Antoni Baby",
+      "unit": "kom",
+      "price_eur": 38,
+      "anchor_eur": 38,
+      "barcode": null,
+      "availability": "nedostupno",
+      "special_sale": false,
+      "special_sale_name": "",
+      "image": "marama-mazilica-new.jpg"
+    },
+    {
+      "code": "AB-006",
+      "hr": "Jastuk + mazilica",
+      "en": "Feeding pillow + comforter",
+      "brand": "Antoni Baby",
+      "unit": "kom",
+      "price_eur": 35,
+      "anchor_eur": 35,
+      "barcode": null,
+      "availability": "nedostupno",
+      "special_sale": false,
+      "special_sale_name": "",
+      "image": "DSCF0836.jpg"
+    }
+  ],
+  "shipping": [
+    {
+      "hr": "GLS dostava",
+      "en": "GLS delivery",
+      "price_eur": 6,
+      "anchor_eur": 6
+    },
+    {
+      "hr": "BoxNow dostava",
+      "en": "BoxNow delivery",
+      "price_eur": 2,
+      "anchor_eur": 2
+    }
+  ]
+}
