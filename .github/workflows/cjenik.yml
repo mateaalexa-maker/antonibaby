@@ -1,4 +1,6 @@
+
 name: Antoni Baby — jutarnji cjenik
+
 on:
   schedule:
     - cron: '15 5 * * 1-5'
@@ -11,34 +13,65 @@ on:
       - 'data/cijene.json'
       - 'scripts/generate_cjenik.py'
       - '.github/workflows/cjenik.yml'
+
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
 concurrency:
   group: antoni-cjenik
   cancel-in-progress: false
+
 jobs:
   generate:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Preuzmi repozitorij
+        uses: actions/checkout@v4
         with:
           persist-credentials: true
-      - name: Setup Python
+
+      - name: Postavi Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Generate and validate
+
+      - name: Generiraj cjenike i arhivu
         env:
           TZ: Europe/Zagreb
         run: python scripts/generate_cjenik.py
-      - name: Commit updated price lists and snapshots
+
+      - name: Spremi nove cjenike na GitHub
         run: |
           git config user.name "antoni-baby-automation[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/cijene.json app.js index.html pricelists/
           if ! git diff --cached --quiet; then
-            git commit -m "Automatski cjenik $(TZ=Europe/Zagreb date +%Y-%m-%d)"
+            git commit -m "Automatski cjenik $(TZ=Europe/Zagreb date +%Y-%m-%d) [skip netlify]"
             git push
           else
-            echo "No changed files"
+            echo "Nema promjena"
           fi
+
+      - name: Pripremi GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Pripremi CSV cjenike i arhivu
+        run: |
+          mkdir -p _site
+          cp -r pricelists/. _site/
+          touch _site/.nojekyll
+
+      - name: Pripremi datoteke za objavu
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Objavi cjenike na GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
